@@ -5,11 +5,11 @@ Django User Activities
 .. image:: https://badge.fury.io/py/django-user-activities.svg
     :target: https://badge.fury.io/py/django-user-activities
 
-.. image:: https://travis-ci.org/genomics-geek/django-user-activities.svg?branch=master
-    :target: https://travis-ci.org/genomics-geek/django-user-activities
+.. image:: https://travis-ci.org/chopdgd/django-user-activities.svg?branch=develop
+    :target: https://travis-ci.org/chopdgd/django-user-activities
 
-.. image:: https://codecov.io/gh/genomics-geek/django-user-activities/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/genomics-geek/django-user-activities
+.. image:: https://codecov.io/gh/chopdgd/django-user-activities/branch/develop/graph/badge.svg
+    :target: https://codecov.io/gh/chopdgd/django-user-activities
 
 .. image:: https://pyup.io/repos/github/chopdgd/django-user-activities/shield.svg
     :target: https://pyup.io/repos/github/chopdgd/django-user-activities/
@@ -39,7 +39,7 @@ Add it to your `INSTALLED_APPS`:
 
     INSTALLED_APPS = (
         ...
-        'user_activities.apps.UserActivitiesConfig',
+        'user_activities',
         ...
     )
 
@@ -52,9 +52,22 @@ Add Django User Activities's URL patterns:
 
     urlpatterns = [
         ...
-        url(r'^', include(user_activities_urls)),
+        url(r'^', include(user_activities_urls, namespace='user_activities')),
         ...
     ]
+
+Using Activity, Comment, or Review in your models:
+
+.. code-block:: python
+
+    from django.contrib.contenttypes.fields import GenericRelation
+    from django.db import models
+
+
+    class ExampleModel(models.Model):
+        ...
+        comments = GenericRelation('user_activities.Comment')
+        user_activities = GenericRelation('user_activities.Activity')
 
 Features
 --------
