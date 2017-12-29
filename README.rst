@@ -39,7 +39,7 @@ Add it to your `INSTALLED_APPS`:
 
     INSTALLED_APPS = (
         ...
-        'user_activities.apps.UserActivitiesConfig',
+        'user_activities',
         ...
     )
 
@@ -52,9 +52,22 @@ Add Django User Activities's URL patterns:
 
     urlpatterns = [
         ...
-        url(r'^', include(user_activities_urls)),
+        url(r'^', include(user_activities_urls, namespace='user_activities')),
         ...
     ]
+
+Using Activity, Comment, or Review in your models:
+
+.. code-block:: python
+
+    from django.contrib.contenttypes.fields import GenericRelation
+    from django.db import models
+
+
+    class ExampleModel(models.Model):
+        ...
+        comments = GenericRelation('user_activities.Comment')
+        user_activities = GenericRelation('user_activities.Activity')
 
 Features
 --------
