@@ -5,10 +5,10 @@ Django User Activities
 .. image:: https://badge.fury.io/py/django-user-activities.svg
     :target: https://badge.fury.io/py/django-user-activities
 
-.. image:: https://travis-ci.org/chopdgd/django-user-activities.svg?branch=master
+.. image:: https://travis-ci.org/chopdgd/django-user-activities.svg?branch=develop
     :target: https://travis-ci.org/chopdgd/django-user-activities
 
-.. image:: https://codecov.io/gh/chopdgd/django-user-activities/branch/master/graph/badge.svg
+.. image:: https://codecov.io/gh/chopdgd/django-user-activities/branch/develop/graph/badge.svg
     :target: https://codecov.io/gh/chopdgd/django-user-activities
 
 .. image:: https://pyup.io/repos/github/chopdgd/django-user-activities/shield.svg
