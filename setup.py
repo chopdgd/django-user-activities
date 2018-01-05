@@ -59,14 +59,14 @@ setup(
     install_requires=[
         'djangorestframework==3.7.3',
         'django-filter==1.1.0',
-        'django-genomix==0.1.0',
+        'django-genomix==0.3.0',
         'django-model-utils==3.0.0',
     ],
     license="MIT",
     zip_safe=False,
     keywords='django-user-activities',
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Framework :: Django',
         'Framework :: Django :: 1.10',
         'Framework :: Django :: 1.11',

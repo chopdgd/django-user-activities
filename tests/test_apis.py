@@ -74,7 +74,7 @@ class TestUserActivityAPI(APITestCase):
             'created',
             'modified'
         ]
-        difference = set(expected_keys).difference(set(observed_keys))
+        difference = set(observed_keys).difference(set(expected_keys))
         assert len(difference) == 0
 
     def test_get(self):
@@ -106,7 +106,7 @@ class TestUserActivityAPI(APITestCase):
             'created',
             'modified'
         ]
-        difference = set(expected_keys).difference(set(observed_keys))
+        difference = set(observed_keys).difference(set(expected_keys))
         assert len(difference) == 0
 
     def test_put(self):
@@ -150,7 +150,7 @@ class TestUserActivityAPI(APITestCase):
             'created',
             'modified'
         ]
-        difference = set(expected_keys).difference(set(observed_keys))
+        difference = set(observed_keys).difference(set(expected_keys))
         assert len(difference) == 0
 
     def test_patch(self):
@@ -191,7 +191,7 @@ class TestUserActivityAPI(APITestCase):
             'created',
             'modified'
         ]
-        difference = set(expected_keys).difference(set(observed_keys))
+        difference = set(observed_keys).difference(set(expected_keys))
         assert len(difference) == 0
 
     def test_delete(self):
@@ -294,7 +294,7 @@ class TestCommentAPI(APITestCase):
             'created',
             'modified'
         ]
-        difference = set(expected_keys).difference(set(observed_keys))
+        difference = set(observed_keys).difference(set(expected_keys))
         assert len(difference) == 0
 
     def test_get(self):
@@ -336,11 +336,12 @@ class TestCommentAPI(APITestCase):
             'text',
             'active',
             'activities',
+            'tags',
             'user',
             'created',
             'modified'
         ]
-        difference = set(expected_keys).difference(set(observed_keys))
+        difference = set(observed_keys).difference(set(expected_keys))
         assert len(difference) == 0
 
     def test_put(self):
@@ -384,7 +385,7 @@ class TestCommentAPI(APITestCase):
             'created',
             'modified'
         ]
-        difference = set(expected_keys).difference(set(observed_keys))
+        difference = set(observed_keys).difference(set(expected_keys))
         assert len(difference) == 0
 
     def test_patch(self):
@@ -425,7 +426,7 @@ class TestCommentAPI(APITestCase):
             'created',
             'modified'
         ]
-        difference = set(expected_keys).difference(set(observed_keys))
+        difference = set(observed_keys).difference(set(expected_keys))
         assert len(difference) == 0
 
     def test_delete(self):
@@ -531,7 +532,7 @@ class TestReviewAPI(APITestCase):
             'created',
             'modified'
         ]
-        difference = set(expected_keys).difference(set(observed_keys))
+        difference = set(observed_keys).difference(set(expected_keys))
         assert len(difference) == 0
 
     def test_get(self):
@@ -572,14 +573,16 @@ class TestReviewAPI(APITestCase):
         expected_keys = [
             'id',
             'text',
+            'rating',
             'active',
             'rating',
             'activities',
+            'tags',
             'user',
             'created',
             'modified'
         ]
-        difference = set(expected_keys).difference(set(observed_keys))
+        difference = set(observed_keys).difference(set(expected_keys))
         assert len(difference) == 0
 
     def test_put(self):
@@ -626,7 +629,7 @@ class TestReviewAPI(APITestCase):
             'created',
             'modified'
         ]
-        difference = set(expected_keys).difference(set(observed_keys))
+        difference = set(observed_keys).difference(set(expected_keys))
         assert len(difference) == 0
 
     def test_patch(self):
@@ -661,6 +664,7 @@ class TestReviewAPI(APITestCase):
         expected_keys = [
             'id',
             'text',
+            'rating',
             'active',
             'content_type',
             'object_id',
@@ -668,7 +672,7 @@ class TestReviewAPI(APITestCase):
             'created',
             'modified'
         ]
-        difference = set(expected_keys).difference(set(observed_keys))
+        difference = set(observed_keys).difference(set(expected_keys))
         assert len(difference) == 0
 
     def test_delete(self):

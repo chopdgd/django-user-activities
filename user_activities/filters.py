@@ -1,22 +1,39 @@
 # -*- coding: utf-8 -*-
-from django.contrib.contenttypes.models import ContentType
-from django.db.models import Q
-from django.utils.text import slugify
-
 import django_filters
+from genomix.filters import DisplayChoiceFilter
 
-from . import models
+from . import choices, models
+
+
+class ActivityFilter(django_filters.rest_framework.FilterSet):
+
+    username = django_filters.CharFilter(
+        name='user__username',
+        lookup_expr='iexact',
+    )
+    activity_type = DisplayChoiceFilter(choices=choices.ACTIVITY_TYPES)
+
+    class Meta:
+        model = models.Activity
+        fields = [
+            'user',
+            'activity_type',
+            'active',
+            'content_type',
+            'object_id',
+        ]
 
 
 class CommentFilter(django_filters.rest_framework.FilterSet):
 
     username = django_filters.CharFilter(
-        method='filter_username',
-        label='Username',
+        name='user__username',
+        lookup_expr='iexact',
     )
-    content_model = django_filters.CharFilter(
-        method='filter_content_model',
-        label='ContentType Model',
+    tags = django_filters.ModelMultipleChoiceFilter(
+        queryset=models.Tag.objects.all(),
+        widget=django_filters.widgets.CSVWidget,
+        help_text='Multiple values may be separated by commas.',
     )
 
     class Meta:
@@ -24,31 +41,22 @@ class CommentFilter(django_filters.rest_framework.FilterSet):
         fields = [
             'user',
             'active',
+            'tags',
             'content_type',
             'object_id',
         ]
-
-    def filter_username(self, queryset, name, value):
-        return queryset.filter(Q(user__username__iexact=value))
-
-    def filter_content_model(self, queryset, name, value):
-        obj = ContentType.objects.get(model=value.replace(" ", "").lower())
-        return queryset.filter(Q(content_type=obj.id))
 
 
 class ReviewFilter(django_filters.rest_framework.FilterSet):
 
     username = django_filters.CharFilter(
-        method='filter_username',
-        label='Username',
+        name='user__username',
+        lookup_expr='iexact',
     )
-    content_model = django_filters.CharFilter(
-        method='filter_content_model',
-        label='ContentType Model',
-    )
-    rating_label = django_filters.CharFilter(
-        method='filter_rating_label',
-        label='Rating Label',
+    tags = django_filters.ModelMultipleChoiceFilter(
+        queryset=models.Tag.objects.all(),
+        widget=django_filters.widgets.CSVWidget,
+        help_text='Multiple values may be separated by commas.',
     )
 
     class Meta:
@@ -56,17 +64,8 @@ class ReviewFilter(django_filters.rest_framework.FilterSet):
         fields = [
             'user',
             'active',
+            'tags',
             'content_type',
             'object_id',
             'rating',
         ]
-
-    def filter_username(self, queryset, name, value):
-        return queryset.filter(Q(user__username__iexact=value))
-
-    def filter_content_model(self, queryset, name, value):
-        obj = ContentType.objects.get(model=value.replace(" ", "").lower())
-        return queryset.filter(Q(content_type=obj.id))
-
-    def filter_rating_label(self, queryset, name, value):
-        return queryset.filter(Q(rating__slug=slugify(value)))
