@@ -10,6 +10,8 @@ class ActivityViewSet(viewsets.ModelViewSet):
 
     queryset = models.Activity.objects.fast()
     permission_classes = (permissions.IsAuthenticated, )
+    filter_backends = (DjangoFilterBackend, )
+    filter_class = filters.ActivityFilter
 
     def get_serializer_class(self):
         if self.request.method in ['POST', 'PUT', 'PATCH']:

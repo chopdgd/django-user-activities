@@ -87,6 +87,8 @@ class Tag(TimeStampedLabelModel):
 class Comment(UserActivity):
     """User comments."""
 
+    comments = GenericRelation('user_activities.Comment')
+
     objects = managers.CommentQuerySet.as_manager()
 
     class Meta:
@@ -100,7 +102,14 @@ class Comment(UserActivity):
 class Review(UserActivity):
     """User reviews."""
 
-    rating = models.ForeignKey('user_activities.Rating', on_delete=models.PROTECT)
+    rating = models.ForeignKey(
+        'user_activities.Rating',
+        related_name='reviews',
+        on_delete=models.PROTECT,
+        blank=True,
+        null=True,
+    )
+    comments = GenericRelation('user_activities.Comment')
 
     objects = managers.ReviewQuerySet.as_manager()
 
