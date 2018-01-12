@@ -33,11 +33,14 @@ Install Django User Activities::
 
     pip install django-user-activities
 
-Add it to your `INSTALLED_APPS`:
+Add it to your `INSTALLED_APPS` (along with DRF and django-filters):
 
 .. code-block:: python
 
     INSTALLED_APPS = (
+        ...
+        'rest_framework',
+        'django_filters',
         ...
         'user_activities',
         ...

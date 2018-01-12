@@ -13,3 +13,13 @@ History
 ++++++++++++++++++
 
 * Improved REST API filters.
+
+0.3.1 (2017-01-09)
+++++++++++++++++++
+
+* Fixed issues with migrations.
+
+0.3.2 (2017-01-12)
+++++++++++++++++++
+
+* Fixed route names for SimpleRouter.
