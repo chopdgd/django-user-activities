@@ -5,7 +5,7 @@ from . import viewsets
 
 
 router = routers.SimpleRouter()
-router.register(r'user-activities', viewsets.ActivityViewSet)
+router.register(r'', viewsets.ActivityViewSet)
 router.register(r'comments', viewsets.CommentViewSet)
 router.register(r'reviews', viewsets.ReviewViewSet)
 
