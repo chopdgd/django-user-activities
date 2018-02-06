@@ -42,41 +42,14 @@ class CommentSerializer(serializers.ModelSerializer):
     """Serializer for list and detail requests for User Comments."""
 
     user = UserRelatedField(queryset=get_user_model().objects.all())
-    activities = serializers.SerializerMethodField()
     tags = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = models.Comment
         fields = (
-            'id', 'text', 'active',
-            'activities', 'tags',
+            'id', 'text', 'active', 'tags',
             'user', 'created', 'modified',
         )
-
-    def get_activities(self, obj):
-
-        content_type = ContentType.objects.get(model='comment')
-        counts = models.Activity.objects.aggregate_counts(content_type, obj.id)
-
-        result = {}
-        for element in counts:
-            key = str(choices.ACTIVITY_TYPES[element['activity_type']]).lower().replace(' ', '_')
-            result[key] = element['total']
-
-        # Add in user activities
-        request = self.context.get("request")
-        objs = models.Activity.objects.user_actions(request.user, content_type, obj.id)
-        user_actions = [
-            {
-                'id': x['id'],
-                'active': x['active'],
-                'activity_type': choices.ACTIVITY_TYPES[x['activity_type']].lower(),
-            }
-            for x in objs
-        ]
-
-        result['user_actions'] = user_actions
-        return result
 
 
 class CommentSerializerCreateOrEdit(serializers.ModelSerializer):
@@ -98,7 +71,6 @@ class ReviewSerializer(serializers.ModelSerializer):
     """Serializer for list and detail requests for User Reviews."""
 
     user = UserRelatedField(queryset=get_user_model().objects.all())
-    activities = serializers.SerializerMethodField()
     tags = serializers.StringRelatedField(many=True)
     rating = fields.RatingRelatedField(queryset=models.Rating.objects.all())
 
@@ -106,34 +78,9 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = models.Comment
         fields = (
             'id', 'text', 'active',
-            'rating', 'activities', 'tags',
+            'rating', 'tags',
             'user', 'created', 'modified',
         )
-
-    def get_activities(self, obj):
-
-        content_type = ContentType.objects.get(model='review')
-        counts = models.Activity.objects.aggregate_counts(content_type, obj.id)
-
-        result = {}
-        for element in counts:
-            key = str(choices.ACTIVITY_TYPES[element['activity_type']]).lower().replace(' ', '_')
-            result[key] = element['total']
-
-        # Add in user activities
-        request = self.context.get("request")
-        objs = models.Activity.objects.user_actions(request.user, content_type, obj.id)
-        user_actions = [
-            {
-                'id': x['id'],
-                'active': x['active'],
-                'activity_type': choices.ACTIVITY_TYPES[x['activity_type']].lower(),
-            }
-            for x in objs
-        ]
-
-        result['user_actions'] = user_actions
-        return result
 
 
 class ReviewSerializerCreateOrEdit(serializers.ModelSerializer):
