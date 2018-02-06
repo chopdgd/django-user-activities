@@ -309,24 +309,12 @@ class TestCommentAPI(APITestCase):
         assert response.status_code == status.HTTP_200_OK
 
         # Make sure data is correct
-        # NOTE: This is what is created from fixture
-        activities = {
-            'favorite': 1,
-            'user_actions': [
-                {
-                    'active': True,
-                    'activity_type':
-                    'favorite', 'id': 1
-                }
-            ]
-        }
 
         response_json = response.json()
         assert len(response_json) == 1
         assert response_json[0]['id'] == 1
         assert response_json[0]['text'] == 'text'
         assert response_json[0]['active'] is True
-        assert response_json[0]['activities'] == activities
         assert response_json[0]['user'] == 'username'
 
         # Make sure all expected keys are in the response
@@ -335,7 +323,6 @@ class TestCommentAPI(APITestCase):
             'id',
             'text',
             'active',
-            'activities',
             'tags',
             'user',
             'created',
@@ -547,17 +534,6 @@ class TestReviewAPI(APITestCase):
         assert response.status_code == status.HTTP_200_OK
 
         # Make sure data is correct
-        # NOTE: This is what is created from fixture
-        activities = {
-            'favorite': 1,
-            'user_actions': [
-                {
-                    'active': True,
-                    'activity_type':
-                    'favorite', 'id': 1
-                }
-            ]
-        }
 
         response_json = response.json()
         assert len(response_json) == 1
@@ -565,7 +541,6 @@ class TestReviewAPI(APITestCase):
         assert response_json[0]['text'] == 'text'
         assert response_json[0]['active'] is True
         assert response_json[0]['rating'] == 'label'
-        assert response_json[0]['activities'] == activities
         assert response_json[0]['user'] == 'username'
 
         # Make sure all expected keys are in the response
@@ -576,7 +551,6 @@ class TestReviewAPI(APITestCase):
             'rating',
             'active',
             'rating',
-            'activities',
             'tags',
             'user',
             'created',

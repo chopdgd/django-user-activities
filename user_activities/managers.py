@@ -26,10 +26,10 @@ class ActivityQuerySet(models.QuerySet):
 class CommentQuerySet(models.QuerySet):
 
     def fast(self):
-        return self.select_related('user').all()
+        return self.select_related('user').prefetch_related('tags').all()
 
 
 class ReviewQuerySet(models.QuerySet):
 
     def fast(self):
-        return self.select_related('user').select_related('rating').all()
+        return self.select_related('user').select_related('rating').prefetch_related('tags').all()
