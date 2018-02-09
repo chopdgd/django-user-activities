@@ -59,7 +59,7 @@ setup(
     install_requires=[
         'djangorestframework==3.7.3',
         'django-filter==1.1.0',
-        'django-genomix==0.4.1',
+        'django-genomix==0.5.0',
         'django-model-utils==3.1.1',
     ],
     license="MIT",
