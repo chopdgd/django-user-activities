@@ -4,6 +4,7 @@ from rest_framework import routers
 from . import viewsets
 
 
+app_name = 'user_activities'
 router = routers.SimpleRouter()
 router.register(r'', viewsets.ActivityViewSet)
 router.register(r'comments', viewsets.CommentViewSet)
