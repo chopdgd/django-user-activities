@@ -42,7 +42,15 @@ History
 0.4.1 (2017-02-09)
 ++++++++++++++++++
 
-`Full Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.3.2...v0.4.0>`_
+`Full Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.4.0...v0.4.1>`_
+
+* Fixed changelog
+* Made updates to dependencies library
+
+0.5.0 (2017-04-07)
+++++++++++++++++++
+
+`Full Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.4.0...v0.5.0>`_
 
 * Fixed changelog
 * Made updates to dependencies library
