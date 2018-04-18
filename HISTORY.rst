@@ -54,3 +54,10 @@ History
 
 * Fixed changelog
 * Made updates to dependencies library
+
+0.5.1 (2017-04-18)
+++++++++++++++++++
+
+`Full Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.0...v0.5.1>`_
+
+* Made updates to dependencies library
