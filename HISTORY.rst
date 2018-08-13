@@ -68,3 +68,10 @@ History
 `Full Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.1...v0.5.2>`_
 
 * Updated setup.py to read requirments.txt
+
+0.5.3 (2018-08-13)
+++++++++++++++++++
+
+`Full Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.2...v0.5.3>`_
+
+* Updated 3rd party requirements. Some requirements had changed so it was causing failures
