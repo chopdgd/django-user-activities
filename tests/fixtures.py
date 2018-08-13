@@ -43,13 +43,14 @@ def Tag():
 @pytest.fixture
 def Comment():
 
+    Activity(content_type='comment')
+
     return mommy.make(
         'user_activities.Comment',
         id=1,
         user=mommy.make('auth.User', id=1, username='username'),
         text='text',
         active=True,
-        activities=[Activity(content_type='comment')],
         content_type=ContentType.objects.get(model='comment'),
         object_id=1,
     )
@@ -58,13 +59,14 @@ def Comment():
 @pytest.fixture
 def Review():
 
+    Activity(content_type='review')
+
     return mommy.make(
         'user_activities.Review',
         id=1,
         user=mommy.make('auth.User', id=1, username='username'),
         text='text',
         active=True,
-        activities=[Activity(content_type='review')],
         rating=Rating(),
         content_type=ContentType.objects.get(model='review'),
         object_id=1,
