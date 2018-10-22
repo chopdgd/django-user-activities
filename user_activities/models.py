@@ -88,6 +88,7 @@ class Comment(UserActivity):
     """User comments."""
 
     comments = GenericRelation('user_activities.Comment')
+    pinned = models.BooleanField(default=False)
 
     objects = managers.CommentQuerySet.as_manager()
 
@@ -110,6 +111,7 @@ class Review(UserActivity):
         null=True,
     )
     comments = GenericRelation('user_activities.Comment')
+    pinned = models.BooleanField(default=False)
 
     objects = managers.ReviewQuerySet.as_manager()
 
