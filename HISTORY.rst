@@ -75,3 +75,10 @@ History
 `Full Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.2...v0.5.3>`_
 
 * Updated 3rd party requirements. Some requirements had changed so it was causing failures
+
+0.5.4 (2018-10-29)
+++++++++++++++++++
+
+`Full Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.3...v0.5.4>`_
+
+* Updated 3rd party requirements.
