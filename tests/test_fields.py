@@ -17,12 +17,10 @@ from user_activities import fields
 from . import fixtures
 
 
-@pytest.fixture()
 def RatingRelatedField():
     return fields.RatingRelatedField(read_only=True)
 
 
-@pytest.fixture()
 def TagRelatedField():
     return fields.TagRelatedField(read_only=True)
 

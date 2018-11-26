@@ -11,7 +11,7 @@ class ActivityViewSet(viewsets.ModelViewSet):
     queryset = models.Activity.objects.fast()
     permission_classes = (permissions.IsAuthenticated, )
     filter_backends = (DjangoFilterBackend, )
-    filter_class = filters.ActivityFilter
+    filterset_class = filters.ActivityFilter
 
     def get_serializer_class(self):
         if self.request.method in ['POST', 'PUT', 'PATCH']:
@@ -25,7 +25,7 @@ class CommentViewSet(viewsets.ModelViewSet):
     queryset = models.Comment.objects.fast()
     permission_classes = (permissions.IsAuthenticated, )
     filter_backends = (DjangoFilterBackend, )
-    filter_class = filters.CommentFilter
+    filterset_class = filters.CommentFilter
 
     def get_serializer_class(self):
         if self.request.method in ['POST', 'PUT', 'PATCH']:
@@ -39,7 +39,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
     queryset = models.Review.objects.fast()
     permission_classes = (permissions.IsAuthenticated, )
     filter_backends = (DjangoFilterBackend, )
-    filter_class = filters.ReviewFilter
+    filterset_class = filters.ReviewFilter
 
     def get_serializer_class(self):
         if self.request.method in ['POST', 'PUT', 'PATCH']:
