@@ -2,10 +2,8 @@
 from django.contrib.contenttypes.models import ContentType
 
 from model_mommy import mommy
-import pytest
 
 
-@pytest.fixture
 def Activity(content_type='comment'):
 
     return mommy.make(
@@ -18,7 +16,6 @@ def Activity(content_type='comment'):
     )
 
 
-@pytest.fixture
 def Rating():
 
     return mommy.make(
@@ -29,7 +26,6 @@ def Rating():
     )
 
 
-@pytest.fixture
 def Tag():
 
     return mommy.make(
@@ -40,7 +36,6 @@ def Tag():
     )
 
 
-@pytest.fixture
 def Comment():
 
     Activity(content_type='comment')
@@ -56,7 +51,6 @@ def Comment():
     )
 
 
-@pytest.fixture
 def Review():
 
     Activity(content_type='review')
