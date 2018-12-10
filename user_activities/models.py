@@ -20,7 +20,7 @@ class UserActivity(TimeStampedModel):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
     )
-    text = models.CharField(max_length=255)
+    text = models.CharField(max_length=255, blank=True)
     active = models.BooleanField(default=True)
     activities = GenericRelation('user_activities.Activity')
     tags = models.ManyToManyField('user_activities.Tag', blank=True)
