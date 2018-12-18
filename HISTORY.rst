@@ -82,3 +82,10 @@ History
 `Full Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.3...v0.5.4>`_
 
 * Updated 3rd party requirements.
+
+0.5.5 (2018-12-18)
+++++++++++++++++++
+
+`Full Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.4...v0.5.5>`_
+
+* Minor model change to make text not required in Comment/Review models
