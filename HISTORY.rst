@@ -89,3 +89,11 @@ History
 `Full Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.4...v0.5.5>`_
 
 * Minor model change to make text not required in Comment/Review models
+
+0.5.5 (2019-02-08)
+++++++++++++++++++
+
+`Full Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.5...v0.5.6>`_
+
+* Updated 3rd party requirements.
+* Updated testing to properly use py.text fixtures
