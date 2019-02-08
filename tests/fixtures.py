@@ -2,66 +2,78 @@
 from django.contrib.contenttypes.models import ContentType
 
 from model_mommy import mommy
+import pytest
 
 
-def Activity(content_type='comment'):
-
-    return mommy.make(
-        'user_activities.Activity',
-        id=1,
-        user=mommy.make('auth.User', id=1, username='username'),
-        activity_type=0,
-        content_type=ContentType.objects.get(model=content_type),
-        object_id=1,
-    )
+@pytest.fixture
+def User():
+    def _func(username='username', **kwargs):
+        return mommy.make('auth.User', username=username, **kwargs)
+    return _func
 
 
+@pytest.fixture
+def Activity():
+    def _func(content_type=None, user=None, **kwargs):
+        if not content_type:
+            content_type = ContentType.objects.get(model='comment')
+        if not user:
+            user = mommy.make('auth.User', username='username')
+
+        return mommy.make(
+            'user_activities.Activity',
+            content_type=content_type,
+            user=user,
+            **kwargs
+        )
+    return _func
+
+
+@pytest.fixture
 def Rating():
-
-    return mommy.make(
-        'user_activities.Rating',
-        id=1,
-        label='label',
-        description='description',
-    )
+    def _func(**kwargs):
+        return mommy.make('user_activities.Rating', **kwargs)
+    return _func
 
 
+@pytest.fixture
 def Tag():
-
-    return mommy.make(
-        'user_activities.Tag',
-        id=1,
-        label='tag',
-        description='description',
-    )
+    def _func(**kwargs):
+        return mommy.make('user_activities.Tag', **kwargs)
+    return _func
 
 
+@pytest.fixture
 def Comment():
+    def _func(content_type=None, user=None, **kwargs):
+        if not content_type:
+            content_type = ContentType.objects.get(model='comment')
+        if not user:
+            user = mommy.make('auth.User', username='username')
 
-    Activity(content_type='comment')
-
-    return mommy.make(
-        'user_activities.Comment',
-        id=1,
-        user=mommy.make('auth.User', id=1, username='username'),
-        text='text',
-        active=True,
-        content_type=ContentType.objects.get(model='comment'),
-        object_id=1,
-    )
+        return mommy.make(
+            'user_activities.Comment',
+            content_type=content_type,
+            user=user,
+            **kwargs
+        )
+    return _func
 
 
+
+@pytest.fixture
 def Review():
+    def _func(content_type=None, user=None, rating=None, **kwargs):
+        if not content_type:
+            content_type = ContentType.objects.get(model='comment')
+        if not user:
+            user = mommy.make('auth.User', username='username')
 
-    Activity(content_type='review')
-
-    return mommy.make(
-        'user_activities.Review',
-        id=1,
-        user=mommy.make('auth.User', id=1, username='username'),
-        text='text',
-        active=True,
-        rating=Rating(),
-        content_type=ContentType.objects.get(model='review'),
-        object_id=1,
-    )
+        return mommy.make(
+            'user_activities.Review',
+            rating=rating,
+            content_type=content_type,
+            user=user,
+            **kwargs
+        )
+    return _func

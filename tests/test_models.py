@@ -8,82 +8,42 @@ test django-user-activities
 Tests for `django-user-activities` models module.
 """
 from django.test import TestCase
+import pytest
 
-from . import fixtures
-
-
-class TestActivity(TestCase):
-
-    def setUp(self):
-        self.instance = fixtures.Activity()
-
-    def test_str(self):
-        assert str(self.instance) == 'favorite'
-
-    def test_attributes(self):
-        assert self.instance.user.username == 'username'
-        assert self.instance.activity_type == 0
-        assert self.instance.get_activity_type_display() == 'favorite'
-        assert self.instance.content_type.model == 'comment'
-        assert self.instance.object_id == 1
+from .fixtures import (
+    Activity,
+    Rating,
+    Tag,
+    Comment,
+    Review,
+)
 
 
-class TestRating(TestCase):
-
-    def setUp(self):
-        self.instance = fixtures.Rating()
-
-    def test_str(self):
-        assert str(self.instance) == 'label'
-
-    def test_attributes(self):
-        assert self.instance.label == 'label'
-        assert self.instance.description == 'description'
+@pytest.mark.django_db
+def test_Activity(Activity):
+    instance = Activity(activity_type=0, object_id=20)
+    assert str(instance) == 'favorite'
 
 
-class TestTag(TestCase):
-
-    def setUp(self):
-        self.instance = fixtures.Tag()
-
-    def test_str(self):
-        assert str(self.instance) == 'tag'
-
-    def test_attributes(self):
-        assert self.instance.label == 'tag'
-        assert self.instance.description == 'description'
+@pytest.mark.django_db
+def test_Rating(Rating):
+    instance = Rating(label='rating', description='desc')
+    assert str(instance) == 'rating'
 
 
-class TestComment(TestCase):
-
-    def setUp(self):
-        self.instance = fixtures.Comment()
-
-    def test_str(self):
-        assert str(self.instance) == 'text'
-
-    def test_attributes(self):
-        assert self.instance.user.username == 'username'
-        assert self.instance.text == 'text'
-        assert self.instance.active is True
-        assert self.instance.activities.all()[0].id == 1
-        assert self.instance.content_type.model == 'comment'
-        assert self.instance.object_id == 1
+@pytest.mark.django_db
+def test_Tag(Tag):
+    instance = Tag(label='tag', description='desc')
+    assert str(instance) == 'tag'
 
 
-class TestReview(TestCase):
+@pytest.mark.django_db
+def test_Comment(Comment):
+    instance = Comment(text='comment')
+    assert str(instance) == 'comment'
 
-    def setUp(self):
-        self.instance = fixtures.Review()
 
-    def test_str(self):
-        assert str(self.instance) == 'text'
-
-    def test_attributes(self):
-        assert self.instance.user.username == 'username'
-        assert self.instance.text == 'text'
-        assert self.instance.active is True
-        assert self.instance.activities.all()[0].id == 1
-        assert str(self.instance.rating) == 'label'
-        assert self.instance.content_type.model == 'review'
-        assert self.instance.object_id == 1
+@pytest.mark.django_db
+def test_Review(Review):
+    instance = Review(text='comment')
+    assert str(instance) == 'comment'
