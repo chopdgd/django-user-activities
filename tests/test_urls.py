@@ -12,14 +12,9 @@ from django.urls import resolve, reverse
 
 from test_plus.test import TestCase
 
-from .fixtures import Activity, Comment, Review
-
 
 class TestUserActivitiesURLs(TestCase):
     """Test URL patterns for user activities."""
-
-    def setUp(self):
-        self.instance = Activity()
 
     def test_list_reverse(self):
         """user_activities:activity-list should reverse to /user-activities/."""
@@ -44,9 +39,6 @@ class TestUserActivitiesURLs(TestCase):
 class TestCommentsURLs(TestCase):
     """Test URL patterns for user comments."""
 
-    def setUp(self):
-        self.instance = Comment()
-
     def test_list_reverse(self):
         """user_activities:comment-list should reverse to /comments/."""
         self.assertEqual(reverse('user_activities:comment-list'), '/comments/')
@@ -69,9 +61,6 @@ class TestCommentsURLs(TestCase):
 
 class TestReviewsURLs(TestCase):
     """Test URL patterns for user reviews."""
-
-    def setUp(self):
-        self.instance = Review()
 
     def test_list_reverse(self):
         """user_activities:review-list should reverse to /reviews/."""

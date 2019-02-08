@@ -14,7 +14,7 @@ import pytest
 
 from user_activities import fields
 
-from . import fixtures
+from .fixtures import Rating, Tag
 
 
 def RatingRelatedField():
@@ -25,43 +25,61 @@ def TagRelatedField():
     return fields.TagRelatedField(read_only=True)
 
 
-class FieldTestCase(TestCase):
-    field = None
-
-    def test_to_representation(self):
-        if self.field:
-            assert self.field.to_representation(self.internal_value) == self.display_value
-
-    def test_to_representation_failure(self):
-        if self.field:
-            with pytest.raises(Exception):
-                self.field.to_representation(self.bad_internal_value)
-
-    def test_to_internal_value(self):
-        if self.field:
-            assert self.field.to_internal_value(self.display_value) == self.internal_value
-
-    def test_to_internal_value_failure(self):
-        if self.field:
-            with pytest.raises(Exception):
-                self.field.to_internal_value(self.bad_display_value)
+@pytest.mark.django_db
+def test_to_representation_rating(Rating):
+    field = RatingRelatedField()
+    instance = Rating(label='look at me!')
+    assert field.to_representation(instance) == 'look at me!'
 
 
-class TestRatingRelatedField(FieldTestCase):
-
-    def setUp(self):
-        self.field = RatingRelatedField()
-        self.internal_value = fixtures.Rating()
-        self.bad_internal_value = MagicMock(spec=fixtures.Rating(), id=100)
-        self.display_value = 'label'
-        self.bad_display_value = 'bad-label'
+@pytest.mark.django_db
+def test_to_internal_value_rating(Rating):
+    field = RatingRelatedField()
+    instance = Rating(id=999, label='look at me!')
+    assert field.to_internal_value('look at me!') == instance
 
 
-class TestTagRelatedField(FieldTestCase):
+@pytest.mark.django_db
+def test_to_representation_failure_rating(Rating):
+    field = RatingRelatedField()
+    instance = MagicMock(spec=Rating(label='look at me!'), id=100)
+    with pytest.raises(Exception):
+        field.to_representation(instance)
 
-    def setUp(self):
-        self.field = TagRelatedField()
-        self.internal_value = fixtures.Tag()
-        self.bad_internal_value = MagicMock(spec=fixtures.Tag(), id=100)
-        self.display_value = 'tag'
-        self.bad_display_value = 'bad-tag'
+
+@pytest.mark.django_db
+def test_to_internal_value_failure_rating(Rating):
+    field = RatingRelatedField()
+    instance = MagicMock(spec=Rating(label='look at me!'), id=100)
+    with pytest.raises(Exception):
+        field.to_internal_value(instance)
+
+
+@pytest.mark.django_db
+def test_to_representation_tag(Tag):
+    field = TagRelatedField()
+    instance = Tag(label='this tag')
+    assert field.to_representation(instance) == 'this tag'
+
+
+@pytest.mark.django_db
+def test_to_internal_value_tag(Tag):
+    field = TagRelatedField()
+    instance = Tag(id=999, label='this tag')
+    assert field.to_internal_value('this tag') == instance
+
+
+@pytest.mark.django_db
+def test_to_representation_failure_tag(Tag):
+    field = TagRelatedField()
+    instance = MagicMock(spec=Tag(label='this tag'), id=100)
+    with pytest.raises(Exception):
+        field.to_representation(instance)
+
+
+@pytest.mark.django_db
+def test_to_internal_value_failure_tag(Tag):
+    field = TagRelatedField()
+    instance = MagicMock(spec=Tag(label='this tag'), id=100)
+    with pytest.raises(Exception):
+        field.to_internal_value(instance)
