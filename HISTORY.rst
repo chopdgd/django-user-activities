@@ -90,10 +90,18 @@ History
 
 * Minor model change to make text not required in Comment/Review models
 
-0.5.5 (2019-02-08)
+0.5.6 (2019-02-08)
 ++++++++++++++++++
 
 `Full Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.5...v0.5.6>`_
 
 * Updated 3rd party requirements.
 * Updated testing to properly use py.text fixtures
+
+0.5.7 (2019-04-10)
+++++++++++++++++++
+
+`Full Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.6...v0.5.7>`_
+
+* Updated 3rd party requirements.
+* Updated travis to use xenial distribution. Django 2.1 dropped support for SQLite < 3.8.3
