@@ -10,7 +10,7 @@ Tests for `django-user-activities` models module.
 
 import pytest
 
-from .fixtures *  # NOQA
+from .fixtures import *  # NOQA
 
 
 @pytest.mark.django_db
