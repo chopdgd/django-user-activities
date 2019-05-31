@@ -60,7 +60,6 @@ def Comment():
     return _func
 
 
-
 @pytest.fixture
 def Review():
     def _func(content_type=None, user=None, rating=None, **kwargs):

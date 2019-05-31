@@ -7,16 +7,10 @@ test django-user-activities
 
 Tests for `django-user-activities` models module.
 """
-from django.test import TestCase
+
 import pytest
 
-from .fixtures import (
-    Activity,
-    Rating,
-    Tag,
-    Comment,
-    Review,
-)
+from .fixtures *  # NOQA
 
 
 @pytest.mark.django_db

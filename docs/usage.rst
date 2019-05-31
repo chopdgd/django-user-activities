@@ -2,7 +2,7 @@
 Usage
 =====
 
-To use Django User Activities in a project, add it to your `INSTALLED_APPS`:
+To use django-user-activities in a project, add it to your `INSTALLED_APPS`:
 
 .. code-block:: python
 
@@ -12,7 +12,7 @@ To use Django User Activities in a project, add it to your `INSTALLED_APPS`:
         ...
     )
 
-Add Django User Activities's URL patterns:
+Add django-user-activities's URL patterns:
 
 .. code-block:: python
 

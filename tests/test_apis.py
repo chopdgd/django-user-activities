@@ -8,18 +8,16 @@ test django-user-activities
 Tests for `django-user-activities` API.
 """
 
-from django.contrib.auth import get_user_model
-
 try:
     from django.urls import reverse
-except:
+except Exception:
     from django.core.urlresolvers import reverse
 
 import pytest
 from rest_framework import status
 from rest_framework.test import APIClient
 
-from .fixtures import User, Activity, Comment, Rating, Review
+from .fixtures import *  # NOQA
 
 
 @pytest.mark.django_db

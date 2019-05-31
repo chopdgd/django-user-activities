@@ -23,13 +23,13 @@ lib64
 pip-log.txt
 
 # Unit test / coverage reports
+.cache
 .coverage
 .tox
 nosetests.xml
 htmlcov
-.cache
 testing.db
-.pytest_cache
+.pytest_cache*
 
 # Translations
 *.mo
