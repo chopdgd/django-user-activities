@@ -105,3 +105,10 @@ History
 
 * Updated 3rd party requirements.
 * Updated travis to use xenial distribution. Django 2.1 dropped support for SQLite < 3.8.3
+
+0.5.8 (2019-05-31)
+++++++++++++++++++
+
+`0.5.8 Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.7...v0.5.8>`_
+
+* Updated packaged to mirror new cookiecutter template
