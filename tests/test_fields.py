@@ -12,6 +12,7 @@ from mock import MagicMock
 import pytest
 
 from user_activities import fields
+from .fixtures import *  # NOQA
 
 
 def RatingRelatedField():
