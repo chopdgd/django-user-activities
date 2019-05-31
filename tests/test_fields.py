@@ -8,13 +8,11 @@ test django-user-activities
 Tests for `django-user-activities` fields module.
 """
 
-from django.test import TestCase
 from mock import MagicMock
 import pytest
 
 from user_activities import fields
-
-from .fixtures import Rating, Tag
+from .fixtures import *  # NOQA
 
 
 def RatingRelatedField():

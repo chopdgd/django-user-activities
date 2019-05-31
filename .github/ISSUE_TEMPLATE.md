@@ -1,4 +1,4 @@
-* Django User Activities version:
+* django-user-activities version:
 * Django version:
 * Python version:
 * Operating System:

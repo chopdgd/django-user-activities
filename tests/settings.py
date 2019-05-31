@@ -11,7 +11,7 @@ DEBUG = True
 USE_TZ = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "ffffffffffffffffffffffffffffffffffffffffffffffffff"
+SECRET_KEY = "f=dgzkvpp&zb$*ad3lnb(czah9k2ubp*jlk!(9qjv@z_6ij)0w"
 
 DATABASES = {
     "default": {
@@ -28,8 +28,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.sites",
     "django.contrib.staticfiles",
-
     "django.contrib.admin",
+    "django.contrib.messages",
 
     "user_activities",
 

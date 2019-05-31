@@ -56,7 +56,7 @@ setup(
     description="""Django app for dealing with User activities (likes, tags, comments, etc.)""",
     long_description=readme + '\n\n' + history,
     author='Michael A. Gonzalez',
-    author_email='genomics.geek.04.22@gmail.com',
+    author_email='GonzalezMA@email.chop.edu',
     url='https://github.com/genomics-geek/django-user-activities',
     packages=[
         'user_activities',
@@ -68,10 +68,9 @@ setup(
     keywords='django-user-activities',
     classifiers=[
         'Development Status :: 4 - Beta',
-        'Framework :: Django',
-        'Framework :: Django :: 1.11',
         'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.1',
+        'Framework :: Django :: 2.2',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
