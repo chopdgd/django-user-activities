@@ -112,3 +112,10 @@ History
 `0.5.8 Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.7...v0.5.8>`_
 
 * Updated packaged to mirror new cookiecutter template
+
+0.5.9 (2019-07-26)
+++++++++++++++++++
+
+`0.5.9 Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.8...v0.5.9>`_
+
+* Updated 3rd party requirements.
