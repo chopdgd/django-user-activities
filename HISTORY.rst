@@ -133,3 +133,10 @@ History
 `0.5.11 Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.10...v0.5.11>`_
 
 * Updated 3rd party requirements.
+
+1.0.0 (2019-11-01)
++++++++++++++++++++
+
+`1.0.0 Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.11...v1.0.0>`_
+
+* First production release
