@@ -140,3 +140,10 @@ History
 `1.0.0 Changelog <https://github.com/chopdgd/django-user-activities/compare/v0.5.11...v1.0.0>`_
 
 * First production release
+
+1.1.0 (2019-11-26)
++++++++++++++++++++
+
+`1.1.0 Changelog <https://github.com/chopdgd/django-user-activities/compare/v1.0.0...v1.1.0>`_
+
+* Updated character limit to comments/reviews
