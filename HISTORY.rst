@@ -147,3 +147,10 @@ History
 `1.1.0 Changelog <https://github.com/chopdgd/django-user-activities/compare/v1.0.0...v1.1.0>`_
 
 * Updated character limit to comments/reviews
+
+1.2.0 (2020-01-24)
++++++++++++++++++++
+
+`1.2.0 Changelog <https://github.com/chopdgd/django-user-activities/compare/v1.1.0...v1.2.0>`_
+
+* Changed comment fields to TextField
